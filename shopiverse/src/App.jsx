@@ -5,9 +5,11 @@ import Order from "./pages/order/Order";
 import Cart from './pages/cart/Cart';
 import Dashboard from "./pages/admin/dashboard/Dashboard";
 import ErrorPage from "./pages/error/ErrorPage";
+import MyState from './context/data/myState';
 
 const App = () => {
   return (
+  <MyState>
     <Router>
       <Routes>
         <Route path="/" element={<Home/>}/>
@@ -17,6 +19,7 @@ const App = () => {
         <Route path="/*" element={<ErrorPage/>}/>
       </Routes>
     </Router>
+    </MyState>
   )
 }
 
