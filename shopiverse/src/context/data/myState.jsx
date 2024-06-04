@@ -1,7 +1,7 @@
 import React from 'react';
 import MyContext from './myContext';
 
-function myState(props) {
+export default function myState(props) {
 
     const [mode, setmode] = React.useState('light');
 
@@ -21,5 +21,3 @@ function myState(props) {
     </MyContext.Provider>
   )
 }
-
-export default myState
