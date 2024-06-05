@@ -4,6 +4,7 @@ import myContext from '../../context/data/myContext'
 import HeroSection from '../../components/heroSection/HeroSection';
 import Filter from '../../components/filter/Filter';
 import ProductCard from '../../components/productCard/ProductCard';
+import Track from '../../components/track/Track';
 
 
  function Home() {
@@ -13,6 +14,7 @@ import ProductCard from '../../components/productCard/ProductCard';
       <HeroSection/>
       <Filter/>
       <ProductCard/>
+      <Track/>
     </Layout>
   )
 }
