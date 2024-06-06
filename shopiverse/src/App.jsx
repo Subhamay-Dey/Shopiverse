@@ -7,6 +7,7 @@ import Dashboard from "./pages/admin/dashboard/Dashboard";
 import ErrorPage from "./pages/error/ErrorPage";
 import MyState from './context/data/myState';
 import AllProducts from './pages/allproducts/AllProducts';
+import Login from './pages/log/Login';
 
 const App = () => {
   return (
@@ -18,6 +19,7 @@ const App = () => {
         <Route path="/cart" element={<Cart/>}/>
         <Route path="/dashboard" element={<Dashboard/>}/>
         <Route path='/allproducts' element={<AllProducts/>}/>
+        <Route path='/login' element={<Login/>}/>
         <Route path="/*" element={<ErrorPage/>}/>
       </Routes>
     </Router>
