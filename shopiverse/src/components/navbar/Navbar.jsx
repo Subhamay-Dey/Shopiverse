@@ -6,16 +6,60 @@ import { FiSun } from "react-icons/fi";
 import { BsFillCloudSunFill } from "react-icons/bs";
 import { RxCross2 } from "react-icons/rx";
 import {Dialog, Transition} from "@headlessui/react";
+import { signInWithPopup, GoogleAuthProvider } from "firebase/auth";
+import { auth } from "../../firebase/config";
+import { getAuth } from 'firebase/auth';
+import { useNavigate } from 'react-router-dom';
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function Navbar() {
 
   const context = useContext(myContext);
   const {mode, toggleMode} = context;
   const [open , setOpen] = React.useState(false);
+  const navigate = useNavigate();
+
+  const provider = new GoogleAuthProvider();
+
+  const auth = getAuth();
+  const user = auth.currentUser;
+
+  const googleAuthHandler = () => {
+    signInWithPopup(auth, provider)
+    .then((result) => {
+      // This gives you a Google Access Token. You can use it to access the Google API.
+      const credential = GoogleAuthProvider.credentialFromResult(result);
+      const token = credential.accessToken;
+      // The signed-in user info.
+      const user = result.user;
+
+      navigate("/")
+      toast.success("Logged in successfully")
+      console.log(user?.email);
+      
+    }).catch((error) => {
+      // Handle Errors here.
+      const errorCode = error.code;
+      const errorMessage = error.message;
+      // The email of the user's account used.
+      const email = error.customData.email;
+      // The AuthCredential type that was used.
+      const credential = GoogleAuthProvider.credentialFromError(error);
+      // ...
+    });
+  }
+  const logOutHandler = () => {
+    auth.signOut()
+    navigate("/")
+    window.location.reload();
+    toast.warn("Logged out")
+  }
 
   return (
     <div className="bg-white sticky top-0 z-50  "  >
     {/* desktop  */}
+    <ToastContainer/>
     <header className="relative bg-white">
         <p className="flex h-10 items-center justify-center bg-pink-600 px-4 text-sm font-medium text-white sm:px-6 lg:px-8" style={{ backgroundColor: mode === 'dark' ? 'rgb(62 64 66)' : '', color: mode === 'dark' ? 'white' : '', }}>
           Get free delivery on orders over ₹300
@@ -58,9 +102,13 @@ function Navbar() {
                     Admin
                   </Link>
 
-                  <a className="text-sm font-medium text-gray-700 cursor-pointer  " style={{ color: mode === 'dark' ? 'white' : '', }}>
+                  {user ? (<button onClick={logOutHandler} className="text-sm font-medium text-red-700 cursor-pointer  " style={{ color: mode === 'dark' ? 'white' : '', }}>
                     Logout
-                  </a>
+                  </button>) : (<button onClick={googleAuthHandler} className="text-sm font-medium text-sky-700 cursor-pointer  " style={{ color: mode === 'dark' ? 'white' : '', }}>
+                    Login
+                  </button>)}
+
+                  {/* {user && (<h1>{user?.displayName}</h1>)} */}
                 </div>
 
                 <div className="hidden lg:ml-8 lg:flex">
@@ -77,7 +125,7 @@ function Navbar() {
                   <a href="#" className="flex items-center text-gray-700 ">
                     <img
                       className="inline-block w-10 h-10 rounded-full"
-                      src=""
+                      src={user?.photoURL}
                       alt="Dan_Abromov" />
                   </a>
                 </div>
@@ -165,9 +213,11 @@ function Navbar() {
                   </div>
 
                   <div className="flow-root">
-                    <a className="-m-2 block p-2 font-medium text-gray-900 cursor-pointer" style={{ color: mode === 'dark' ? 'white' : '', }}>
-                      Logout
-                    </a>
+                  {user ? (<button onClick={logOutHandler} className="text-sm font-medium text-gray-700 cursor-pointer  " style={{ color: mode === 'dark' ? 'white' : '', }}>
+                    Logout
+                  </button>) : (<button onClick={googleAuthHandler} className="text-sm font-medium text-gray-700 cursor-pointer  " style={{ color: mode === 'dark' ? 'white' : '', }}>
+                    Login
+                  </button>)}
                   </div>
                   <div className="flow-root">
                     <Link to={'/'} className="-m-2 block p-2 font-medium text-gray-900 cursor-pointer">
