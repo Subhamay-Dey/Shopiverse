@@ -9,6 +9,7 @@ import MyState from './context/data/myState';
 import AllProducts from './pages/allproducts/AllProducts';
 import Login from './pages/log/Login';
 import ProductInfo from './pages/productInfo/productInfo';
+import AddProduct from './pages/admin/page/AddProduct';
 
 const App = () => {
   return (
@@ -22,6 +23,7 @@ const App = () => {
         <Route path='/allproducts' element={<AllProducts/>}/>
         <Route path='/login' element={<Login/>}/>
         <Route path='/productInfo/:id' element={<ProductInfo/>}/>
+        <Route path='/addproduct' element={<AddProduct/>}/>
         <Route path="/*" element={<ErrorPage/>}/>
       </Routes>
     </Router>
