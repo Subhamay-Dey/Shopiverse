@@ -11,6 +11,7 @@ import Login from './pages/log/Login';
 import ProductInfo from './pages/productInfo/productInfo';
 import AddProduct from './pages/admin/page/AddProduct';
 import UpdateProduct from './pages/admin/page/UpdateProduct';
+import SignUp from './pages/registration/SignUp';
 
 const App = () => {
   return (
@@ -22,6 +23,7 @@ const App = () => {
         <Route path="/cart" element={<Cart/>}/>
         <Route path="/dashboard" element={<Dashboard/>}/>
         <Route path='/allproducts' element={<AllProducts/>}/>
+        <Route path='/signup' element={<SignUp/>}/>
         <Route path='/login' element={<Login/>}/>
         <Route path='/productInfo/:id' element={<ProductInfo/>}/>
         <Route path='/addproduct' element={<AddProduct/>}/>

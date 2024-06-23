@@ -15,9 +15,11 @@ export default function myState(props) {
       }
     }
 
+    const [loading, setLoading] = useState(false);
+
   return (
-    <MyContext.Provider value={{mode, togglemode}}>
-        {props.children}
+    <MyContext.Provider value={{mode, togglemode, loading, setLoading}}>
+      {props.children}
     </MyContext.Provider>
   )
 }
