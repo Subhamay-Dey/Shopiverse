@@ -7,7 +7,7 @@ import Dashboard from "./pages/admin/dashboard/Dashboard";
 import ErrorPage from "./pages/error/ErrorPage";
 import MyState from './context/data/myState';
 import AllProducts from './pages/allproducts/AllProducts';
-import Login from './pages/log/Login';
+import Login from './pages/registration/Login';
 import ProductInfo from './pages/productInfo/productInfo';
 import AddProduct from './pages/admin/page/AddProduct';
 import UpdateProduct from './pages/admin/page/UpdateProduct';
