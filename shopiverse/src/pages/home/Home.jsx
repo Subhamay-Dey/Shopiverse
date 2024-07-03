@@ -7,7 +7,7 @@ import ProductCard from '../../components/productCard/ProductCard';
 import Track from '../../components/track/Track';
 import Testimonial from '../../components/testimonial/Testimonial';
 import {useDispatch, useSelector} from "react-redux"
-import { addProduct, deleteProduct } from '../../toolkit/cartSlice';
+import { addToCart, deleteFromCart } from '../../toolkit/cartSlice';
 
  function Home() {
 
@@ -19,11 +19,11 @@ import { addProduct, deleteProduct } from '../../toolkit/cartSlice';
   console.log(cartItem);
 
   const addCart = () => {
-    dispatch(addProduct("shirt"));
+    dispatch(addToCart("shirt"));
   }
 
   const deleteCart = () => {
-    dispatch(deleteProduct("shirt"));
+    dispatch(deleteFromCart("shirt"));
   }
 
   return (
