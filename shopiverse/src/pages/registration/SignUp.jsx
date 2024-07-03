@@ -4,9 +4,9 @@ import myContext from '../../context/data/myContext';
 
 function SignUp() {
 
-    const [name, setName] = useState("");
-    const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
+    const [name, setName] = React.useState("");
+    const [email, setEmail] = React.useState("");
+    const [password, setPassword] = React.useState("");
 
     const context = useContext(myContext);
     const {loading, setLoading} = context;
@@ -19,6 +19,8 @@ function SignUp() {
         </div>
         <div>
             <input type="text"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
                 name='name'
                 className=' bg-gray-600 mb-4 px-2 py-2 w-full lg:w-[20em] rounded-lg text-white placeholder:text-gray-200 outline-none'
                 placeholder='Name'
@@ -26,6 +28,8 @@ function SignUp() {
         </div>
         <div>
             <input type="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
                 name='email'
                 className=' bg-gray-600 mb-4 px-2 py-2 w-full lg:w-[20em] rounded-lg text-white placeholder:text-gray-200 outline-none'
                 placeholder='Email'
@@ -34,6 +38,8 @@ function SignUp() {
         <div>
             <input
                 type="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
                 className=' bg-gray-600 mb-4 px-2 py-2 w-full lg:w-[20em] rounded-lg text-white placeholder:text-gray-200 outline-none'
                 placeholder='Password'
             />
