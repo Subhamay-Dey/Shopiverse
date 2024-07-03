@@ -1,7 +1,15 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { Link } from 'react-router-dom'
+import myContext from '../../context/data/myContext';
 
 function SignUp() {
+
+    const [name, setName] = useState("");
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+
+    const context = useContext(myContext);
+    const {loading, setLoading} = context;
 
   return (
     <div className=' flex justify-center items-center h-screen'>
